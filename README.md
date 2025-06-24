@@ -47,7 +47,7 @@ A simple **\ε-​greedy** Q-learning agent for OpenAI Gym’s CartPole-v1 envir
 1. Clone this repository:  
    ```bash
    git clone https://github.com/omid-mohebi/cartpole-rl.git
-   cd cartpole-rl
+   cd cartpole-rl```
 
 
 2. Create a virtual environment and install packages:
@@ -55,8 +55,7 @@ A simple **\ε-​greedy** Q-learning agent for OpenAI Gym’s CartPole-v1 envir
    python3 -m venv venv
    source venv/bin/activate
    pip install --upgrade pip
-   pip install gymnasium numpy matplotlib scikit-learn
-
+   pip install gymnasium numpy matplotlib scikit-learn```
 
 
 
