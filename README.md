@@ -100,3 +100,5 @@ You can adjust these directly in the script or parameterize via command-line fla
 ## Results
 
 Typical training yields average rewards approaching 500 (solved) within ~1,000–2,000 episodes. The moving-average plot helps track convergence behavior.
+
+![Convergence behavior.](assets/Figure_1.png)
