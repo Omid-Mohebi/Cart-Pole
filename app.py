@@ -27,3 +27,32 @@ def gather_samples(env, episodes=10000):
             samples.append(state_action)
             state, reward, terminated, truncated, info = env.step(action)
     return samples
+
+class Model:
+    def __init__(self, env):
+        self.env = env
+        print("Gathering samples to fit the featurizer...")
+        sample_env = gym.make('CartPole-v1')
+        samples = gather_samples(sample_env)
+        sample_env.close()
+        
+        self.featurizer = RBFSampler()
+        self.featurizer.fit(samples)
+        dimensions = self.featurizer.n_components
+        print("Featurizer fitted.")
+
+        self.w = np.zeros(dimensions)
+
+    def _transform(self, state, action):
+        state_action = np.concatenate((state, [action]))
+        return self.featurizer.transform([state_action])[0]
+
+    def predict(self, state, action):
+        x = self._transform(state, action)
+        return x @ self.w
+
+    def predict_all_actions(self, state):
+        return [self.predict(state, action) for action in range(self.env.action_space.n)]
+
+    def grad(self, state, action):
+        return self._transform(state, action)
