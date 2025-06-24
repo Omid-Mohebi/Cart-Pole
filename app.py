@@ -95,7 +95,7 @@ if __name__ == '__main__':
     model = Model(train_env)
     
     reward_per_episode = []
-    episodes = 10000
+    episodes = 2000
     print(f"\nStarting training for {episodes} episodes...")
 
     for i in range(episodes):
@@ -134,7 +134,6 @@ if __name__ == '__main__':
     train_env.close()
     print("Training finished.")
 
-    # --- Evaluation and Visualization ---
     test_env = gym.make('CartPole-v1')
     avg_test_reward = test_agent(model, test_env)
     print(f'\nAverage test reward over 20 episodes: {avg_test_reward:.2f}')
